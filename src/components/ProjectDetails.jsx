@@ -70,7 +70,7 @@ const ProjectDetails = () => {
   };
 
   return (
-    <section className="relative min-h-screen pt-28">
+    <section className="relative min-h-screen pt-28 w-full overflow-x-hidden">
       {/* Floating background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div

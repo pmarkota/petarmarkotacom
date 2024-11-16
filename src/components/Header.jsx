@@ -51,7 +51,7 @@ const Header = () => {
         isScrolled ? "backdrop-blur-xl bg-background-dark/70" : ""
       }`}
     >
-      <nav className="section-container py-4">
+      <nav className="py-4 section-container">
         <div className="flex items-center justify-between">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -59,10 +59,10 @@ const Header = () => {
               className="flex items-center space-x-2"
               onClick={scrollToTop}
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-accent">
                 <span className="text-xl font-bold text-white">PM</span>
               </div>
-              <span className="text-xl font-heading font-bold gradient-text">
+              <span className="text-xl font-bold font-heading gradient-text">
                 Petar Markota
               </span>
             </Link>
@@ -82,10 +82,10 @@ const Header = () => {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="md:hidden mt-4 overflow-hidden"
+              className="mt-4 overflow-hidden md:hidden"
             >
               <motion.div
-                className="flex flex-col space-y-2 bg-surface-light p-4 rounded-lg"
+                className="flex flex-col p-4 space-y-2 rounded-lg bg-surface-light"
                 variants={{
                   open: {
                     transition: {
@@ -121,7 +121,7 @@ const Header = () => {
                 <motion.a
                   href={resumePDF}
                   download="Petar_Markota_Resume.pdf"
-                  className="btn-primary text-center"
+                  className="text-center btn-primary"
                   variants={{
                     closed: { x: -20, opacity: 0 },
                     open: { x: 0, opacity: 1 },
