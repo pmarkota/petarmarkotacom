@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
+import resumePDF from "../assets/resume.pdf"; // Import the PDF file
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -118,7 +119,8 @@ const Header = () => {
                   )
                 )}
                 <motion.a
-                  href="/resume.pdf"
+                  href={resumePDF}
+                  download="Petar_Markota_Resume.pdf"
                   className="btn-primary text-center"
                   variants={{
                     closed: { x: -20, opacity: 0 },

@@ -2,6 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useAnimations } from "../hooks/useAnimations";
 import { Link } from "react-router-dom";
+import nutri1 from "../assets/nutri1.png";
+import nutri2 from "../assets/nutri2.png";
+import nutri3 from "../assets/nutri3.png";
+import nutri4 from "../assets/nutri4.png";
 
 const ProjectDetails = () => {
   const { containerVariants, itemVariants } = useAnimations();
@@ -66,7 +70,7 @@ const ProjectDetails = () => {
   };
 
   return (
-    <section className="relative min-h-screen pt-20">
+    <section className="relative min-h-screen pt-28">
       {/* Floating background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div
@@ -193,6 +197,75 @@ const ProjectDetails = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Project Screenshots */}
+        <motion.div
+          variants={itemVariants}
+          className="glass-card p-8 mb-12 overflow-hidden"
+        >
+          <h2 className="text-2xl font-bold gradient-text mb-8">
+            Project Gallery
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[nutri1, nutri2, nutri3, nutri4].map((image, index) => (
+              <motion.div
+                key={index}
+                className="relative group rounded-xl overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <img
+                  src={image}
+                  alt={`Nutri Project Screenshot ${index + 1}`}
+                  className="w-full h-full object-cover rounded-xl"
+                />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                >
+                  <p className="text-text-light text-center font-medium">
+                    {index === 0 && "Dashboard Overview"}
+                    {index === 1 && "Recipe Management"}
+                    {index === 2 && "Meal Planning Calendar"}
+                    {index === 3 && "Shopping List Generator"}
+                  </p>
+                </motion.div>
+
+                {/* Glowing border effect on hover */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{
+                    opacity: 1,
+                    boxShadow: "0 0 20px rgba(128, 90, 213, 0.3)",
+                  }}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Image navigation dots */}
+          <div className="flex justify-center space-x-2 mt-6">
+            {[0, 1, 2, 3].map((_, index) => (
+              <motion.div
+                key={index}
+                className="w-2 h-2 rounded-full bg-primary/50"
+                whileHover={{ scale: 1.2 }}
+                animate={{
+                  scale: [1, 1.2, 1],
+                  transition: {
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: index * 0.2,
+                  },
+                }}
+              />
+            ))}
           </div>
         </motion.div>
 

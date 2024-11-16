@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useAnimations } from "../hooks/useAnimations";
+import resumePDF from "../assets/resume.pdf";
 
 const TimelineItem = ({ year, title, company, description, delay }) => {
   const { itemVariants } = useAnimations();
@@ -109,9 +110,9 @@ const Resume = () => {
           className="flex justify-center mb-12"
         >
           <motion.a
-            href="/resume.pdf"
+            href={resumePDF}
             className="btn-primary inline-flex items-center space-x-2 group"
-            download
+            download="Petar_Markota_Resume.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import resumePDF from "../assets/resume.pdf"; // Import the PDF file
 
 const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const location = useLocation();
@@ -10,7 +11,6 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
     setIsMobileMenuOpen(false);
 
     if (location.pathname !== "/") {
-      // If we're not on the home page, navigate home first
       window.location.href = `/#${id}`;
       return;
     }
@@ -48,7 +48,8 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
           </motion.a>
         ))}
         <motion.a
-          href="/resume.pdf"
+          href={resumePDF}
+          download="Petar_Markota_Resume.pdf"
           className="ml-4 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-white
           hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
           whileHover={{ scale: 1.05 }}
@@ -58,7 +59,7 @@ const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
         </motion.a>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Button */}
       <motion.button
         className="md:hidden p-2 hover:bg-surface-light rounded-lg transition-colors duration-300"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
