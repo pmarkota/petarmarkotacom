@@ -1,9 +1,33 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+
+    if (location.pathname !== "/") {
+      // If we're not on the home page, navigate to home first
+      window.location.href = `/#${id}`;
+      return;
+    }
+
+    // If we're on the home page, just scroll to the section
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; // Height of your fixed header
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const socialLinks = [
     {
@@ -36,7 +60,6 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-surface-dark/50 backdrop-blur-sm mt-20">
-      {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
@@ -69,6 +92,7 @@ const Footer = () => {
                     key={link}
                     href={`#${link.toLowerCase()}`}
                     className="text-text-dark hover:text-primary transition-colors"
+                    onClick={(e) => handleNavClick(e, link.toLowerCase())}
                     whileHover={{ x: 5 }}
                   >
                     {link}
